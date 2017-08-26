@@ -16,8 +16,8 @@ class ItemController extends Controller
      */
     public function index()
     {
-        $items = Item::all();
-        return response($items);
+        $incomplete_items = Item::where('checked', false)->get();
+        return response($incomplete_items);
         /*どうやらresponseをすることでステータスコードとかも返せている*/
     }
 
