@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Item;
 use Illuminate\Http\Request;
 use App\Http\Requests\ItemStoreFormRequest;
+use App\Http\Requests\ItemUpdateFormRequest;
 
 class ItemController extends Controller
 {
@@ -54,9 +55,17 @@ class ItemController extends Controller
      * @param  \App\Item  $item
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Item $item)
+    public function update(ItemUpdateFormRequest $request, Item $item)
     {
-        //
+        if ($request->input('content')) {
+            $item->content = $request->input('content');
+        }
+        if ($request->input('checked')) {
+            $item->checked = $request->input('checked');
+        }
+
+        $item->save();
+        return response($item);
     }
 
     /**
