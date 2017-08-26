@@ -1,10 +1,10 @@
-#Description
+# Description
 
 This app consists of
   - API = Laravel
   - front = Vue + Vuex
 
-#Setup
+# Setup
 
 - build js
 
