@@ -8,6 +8,8 @@
 require('./bootstrap');
 
 window.Vue = require('vue');
+ //vueの直下におく
+window.Vue.use(require('vuex'));
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -15,8 +17,11 @@ window.Vue = require('vue');
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-Vue.component('example', require('./components/Example.vue'));
+ const App = require('./components/App.vue');
+ const store = require('./store/').default;
 
 const app = new Vue({
-    el: '#app'
+    el: '#app',
+    store,
+    render: h => h(App)
 });
